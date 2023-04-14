@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Sans Pro",sans-serif;
+    font-size: 13px;
+    background-color: #f5f6f7;
+}
+
+textarea, input { 
+    padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+nav {
+    box-shadow: 0px 4px 8px #ddd;
+    padding: 15px 30px;
+    background-color: #fff;
+}
+
+.brand {
+    width: 128px;
+}
+
+.brand-vector {
+    margin-left: -50px;
+    width: 135%;
+}
+
+.vector-wrapper {
+    float: left;
+    width: 50%;
+}
+
+.form-wrapper {
+    float: right;
+    width: 50%;
+}
+
+.recruitment-form {
+    width: max-content;
+    margin: 50px auto;
+    padding: 40px 25px;
+    color: #424242;
+    box-shadow: 0px 4px 8px #ddd;
+    background-color: #fff;
+}
+
+.recruitment-form .logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.form-description {
+    margin-bottom: 20px;
+}
+
+.form-description .title {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.form-description .caption {
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group .required-marker {
+    color: #e53935;
+}
+
+.form-group .form-control {
+    display: block;
+    padding: 10px 8px;
+    margin-top: 8px;
+    border: 1px solid #cfd8dc;
+    border-radius: 5px;
+    min-height: 35px;
+    font-size: 0.75rem;
+    box-shadow: none;
+    width: 100%;
+    outline: none;
+}
+
+.btn-submit {
+    color: #fff;
+    background-color: #1e88e5;
+    width: 100%;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.recruitment-form .footer {
+    width: 100%;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.recruitment-form .footer .social-media {
+    margin: 0 auto;
+    width: max-content;
+}
+
+.recruitment-form .footer ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 2rem;
+}
+
+.recruitment-form .footer ul li {
+    float: left;
+}
+
+.recruitment-form .footer a {
+    color: #424242;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.footer .website-link {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 1190px) {
+    .vector-wrapper {
+      display:none;
+    }
+
+    .form-wrapper {
+        width: 100%;
+    }
+}
