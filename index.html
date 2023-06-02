@@ -41,17 +41,13 @@
                     </div>
                     <div class="form-group">
                         <label for="vacancy">Vacancy<span class="required-marker">*</span></label>
-                        <select class="form-control" name="vacancy" id="vacancy" required>
-                            <option value="">- Pilih Lowongan -</option>
+                        <select class="form-control" name="vacancy" id="vacancy" onchange="showPositions()" required>
+                            <option value="">-- Pilih Lowongan --</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="position">Position<span class="required-marker">*</span></label>
                         <select class="form-control" name="position" id="position" required>
-                            <option value="">- Pilih Posisi -</option>
-                            <option value="Contoh Posisi #1">Contoh Posisi #1</option>
-                            <option value="Contoh Posisi #2">Contoh Posisi #2</option>
-                            <option value="Contoh Posisi #3">Contoh Posisi #3</option>
                         </select>
                     </div>
                     <div class="form-group" style="margin-top:30px">
@@ -92,5 +88,54 @@
     </section>
 
     <script src="https://kit.fontawesome.com/4670674644.js" crossorigin="anonymous"></script>
+    <script>
+
+        const vacancies = [
+            {value: 55, text: 'Junior Programmer', locations: ['Bandung', 'Jakarta', 'Surabaya']},
+            {value: 56, text: 'Technical Writer', locations: ['Bandung', 'Jakarta']},
+            {value: 57, text: 'System Analyst', locations: ['Bandung']},
+        ];
+
+        const selectVacancy = document.getElementById('vacancy');
+        
+        vacancies.forEach(vacancy => {
+            const optionElement = document.createElement('option');
+            optionElement.value = vacancy.value;
+            optionElement.text = vacancy.text;
+            selectVacancy.add(optionElement);
+        });
+
+        function removeSelectOptions(element) {
+            while (element.options.length > 0) {
+                element.remove(0);
+            }
+        }
+
+        function showPositions() {
+
+            const selectElement = document.getElementById('vacancy');
+            const selectedValue = selectElement.value;
+            const selectPosition = document.getElementById('position');
+
+            removeSelectOptions(selectPosition);
+
+            vacancies.forEach(vacancy => {
+
+                if(vacancy.value == selectedValue) {
+
+                    vacancy.locations.forEach(location => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = vacancy.value;
+                        optionElement.text = vacancy.text + ' - ' + location;
+                        selectPosition.add(optionElement);
+                    });
+
+                }
+
+            });
+            
+        }
+
+    </script>
 </body>
 </html>
