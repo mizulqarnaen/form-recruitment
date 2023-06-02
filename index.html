@@ -90,8 +90,31 @@
     <div id="successModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>SUKSES!</h2>
-            <p>Terima kasih telah melakukan pengisian <br> permintaan anda akan segera kami proses</p>
+            <h2 class="modal-title success-text">SUKSES!</h2>
+            <p class="modal-subtitle success-text">Terima kasih telah melakukan pengisian<br>
+                permintaan anda akan segera kami proses</p>
+            <table class="modal-table">
+                <tr>
+                    <td class="title">Fullname</td>
+                    <td id="fullnameText"></td>
+                </tr>
+                <tr>
+                    <td class="title">Email</td>
+                    <td id="emailText"></td>
+                </tr>
+                <tr>
+                    <td class="title">Phone Number</td>
+                    <td id="phonenumberText"></td>
+                </tr>
+                <tr>
+                    <td class="title">Vacancy</td>
+                    <td id="vacancyText"></td>
+                </tr>
+                <tr>
+                    <td class="title">Position</td>
+                    <td id="positionText"></td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -147,6 +170,19 @@
 
         function submitForm(event) {
             event.preventDefault();
+
+            let fullname = document.getElementById('fullname').value;
+            let email = document.getElementById('email').value;
+            let phonenumber = document.getElementById('phonenumber').value;
+            let vacancy = document.getElementById('vacancy').text;
+            let position = document.getElementById('position').text;
+
+            document.getElementById('fullnameText').innerHTML = fullname;
+            document.getElementById('emailText').innerHTML = email;
+            document.getElementById('phonenumberText').innerHTML = phonenumber;
+            document.getElementById('vacancyText').innerHTML = vacancy;
+            document.getElementById('positionText').innerHTML = position;
+
             openModal();
         }
 
