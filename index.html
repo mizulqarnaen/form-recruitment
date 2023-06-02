@@ -26,7 +26,7 @@
                     <h3 class="title">Form Rekruitasi</h3>
                     <p class="caption">Isi data di bawah sesuai dengan identitas diri anda dan lowongan yang akan anda pilih</p>
                 </div>
-                <form action="" novalidate="novalidate">
+                <form action="#">
                     <div class="form-group">
                         <label for="fullname">Fullname<span class="required-marker">*</span></label>
                         <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" placeholder="Masukkan nama" required>
@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="form-group" style="margin-top:30px">
-                        <button type="submit" class="btn-submit">Kirim</button>
+                        <button type="button" class="btn-submit" onclick="openModal()">Kirim</button>
                     </div>
                 </form>
                 <div class="footer">
@@ -87,7 +87,16 @@
         </div>
     </section>
 
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>SUKSES!</h2>
+            <p>Terima kasih telah melakukan pengisian <br> permintaan anda akan segera kami proses</p>
+        </div>
+    </div>
+
     <script src="https://kit.fontawesome.com/4670674644.js" crossorigin="anonymous"></script>
+    <script src="assets/js/modal.js"></script>
     <script>
 
         const vacancies = [
