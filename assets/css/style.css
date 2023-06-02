@@ -167,19 +167,27 @@ nav {
     font-size: 1.7em;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .modal-subtitle {
     font-size: 1.2em;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .modal-table {
     width: 100%;
+    border: 1px solid #dde2e6;
+    border-radius: 10px;
 }
 
 .modal-table tr td {
-    padding: 5px;
+    padding: 10px;
+}
+
+.modal-table tr td.title {
+    font-weight: 600;
 }
 
 .success-text {
