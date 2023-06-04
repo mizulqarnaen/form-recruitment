@@ -157,7 +157,7 @@
 
                     vacancy.locations.forEach(location => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = vacancy.value;
+                        optionElement.value = vacancy.value + '-' + location.toLowerCase();
                         optionElement.text = vacancy.text + ' - ' + location;
                         selectPosition.add(optionElement);
                     });
