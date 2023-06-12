@@ -29,26 +29,28 @@
                 <form action="" onsubmit="submitForm(event)" id="formRecruitment">
                     <div class="form-group">
                         <label for="fullname">Fullname<span class="required-marker">*</span></label>
-                        <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" placeholder="Masukkan nama" required>
+                        <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" placeholder="Masukkan nama">
+                        <p class="form-text" id="fullnameErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="email">Email<span class="required-marker">*</span></label>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="Masukkan email" required>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Masukkan email">
                         <p class="form-text" id="emailErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="phonenumber">Phone Number<span class="required-marker">*</span></label>
-                        <input class="form-control" type="text" name="phonenumber" id="phonenumber" placeholder="Masukkan nomor telepon" required>
+                        <input class="form-control" type="text" name="phonenumber" id="phonenumber" placeholder="Masukkan nomor telepon">
+                        <p class="form-text" id="phonenumberErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="vacancy">Vacancy<span class="required-marker">*</span></label>
-                        <select class="form-control" name="vacancy" id="vacancy" onchange="showPositions()" required>
+                        <select class="form-control" name="vacancy" id="vacancy" onchange="showPositions()">
                             <option value="">-- Pilih Lowongan --</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="position">Position<span class="required-marker">*</span></label>
-                        <select class="form-control" name="position" id="position" onchange="checkQuota()" required>
+                        <select class="form-control" name="position" id="position" onchange="checkQuota()">
                         </select>
                         <p class="form-text" id="positionErrorText"></p>
                     </div>
@@ -198,21 +200,25 @@
         function submitForm(event) {
             event.preventDefault();
 
-            let fullname = document.getElementById('fullname').value;
-            let email = document.getElementById('email').value;
-            let phonenumber = document.getElementById('phonenumber').value;
-            let vacancy = document.getElementById('vacancy');
-            let position = document.getElementById('position');
-            let selectedVacancy = vacancy.options[vacancy.selectedIndex].text;
-            let selectedPosition = position.options[position.selectedIndex].text;
+            if(validateInput()) {
 
-            document.getElementById('fullnameText').innerHTML = fullname;
-            document.getElementById('emailText').innerHTML = email;
-            document.getElementById('phonenumberText').innerHTML = phonenumber;
-            document.getElementById('vacancyText').innerHTML = selectedVacancy;
-            document.getElementById('positionText').innerHTML = selectedPosition;
+                let fullname = document.getElementById('fullname').value;
+                let email = document.getElementById('email').value;
+                let phonenumber = document.getElementById('phonenumber').value;
+                let vacancy = document.getElementById('vacancy');
+                let position = document.getElementById('position');
+                let selectedVacancy = vacancy.options[vacancy.selectedIndex].text;
+                let selectedPosition = position.options[position.selectedIndex].text;
 
-            openModal();
+                document.getElementById('fullnameText').innerHTML = fullname;
+                document.getElementById('emailText').innerHTML = email;
+                document.getElementById('phonenumberText').innerHTML = phonenumber;
+                document.getElementById('vacancyText').innerHTML = selectedVacancy;
+                document.getElementById('positionText').innerHTML = selectedPosition;
+
+                openModal();
+
+            }
         }
 
     </script>

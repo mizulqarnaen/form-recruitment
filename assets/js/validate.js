@@ -5,6 +5,27 @@ function showErrorText(idElem, text, add, remove) {
     errorTextElement.classList.remove(remove);
 }
 
+function validateInput() {
+    const arrayInput = ['fullname', 'email', 'phonenumber'];
+    let isValid = true;
+
+    arrayInput.forEach(input => {
+        var nameInput = document.getElementById(input);
+        var nameValue = nameInput.value.trim();
+      
+        if (nameValue === '') {
+            let text = input + ' wajib diisi!';
+            showErrorText(input + 'ErrorText', text, 'danger', 'success');
+            isValid = false;
+        } else {
+            showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+
+    });
+
+    return isValid;
+  }
+
 function checkQuota() {
 
     const selectElement = document.getElementById('position');
