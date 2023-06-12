@@ -232,9 +232,32 @@
                 document.getElementById('positionText').innerHTML = selectedPosition;
                 document.getElementById('rankRegistered').innerHTML = dataVacancies.length;
 
+                updateQuota(position.value);
                 openModal();
 
             }
+        }
+
+        function updateQuota(data) {
+            let vacancy = data.split('-');
+            let vacancyValue = vacancy[0];
+            let vacancyLocation = vacancy[1];
+
+            vacancies.forEach(vacancy => {
+
+                if(vacancy.value == vacancyValue) {
+
+                    vacancy.positions.forEach(position => {
+                        
+                        if(position.location.toLowerCase() == vacancyLocation) {
+                            position.quota--;
+                        }
+
+                    });
+
+                }
+
+            });
         }
 
     </script>
