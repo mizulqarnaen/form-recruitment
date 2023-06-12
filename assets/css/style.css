@@ -209,6 +209,19 @@ nav {
     cursor: pointer;
 }  
 
+.form-text {
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.form-text.danger {
+    color: #e74c3c;
+}
+
+.form-text.success {
+    color: #27ae60;
+}
+
 @media screen and (max-width: 1190px) {
     .vector-wrapper {
       display:none;

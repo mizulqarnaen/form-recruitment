@@ -47,8 +47,9 @@
                     </div>
                     <div class="form-group">
                         <label for="position">Position<span class="required-marker">*</span></label>
-                        <select class="form-control" name="position" id="position" required>
+                        <select class="form-control" name="position" id="position" onchange="checkQuota()" required>
                         </select>
+                        <p class="form-text" id="positionErrorText"></p>
                     </div>
                     <div class="form-group" style="margin-top:30px">
                         <button type="submit" class="btn-submit">Kirim</button>
@@ -126,25 +127,25 @@
             {
                 value: 55, 
                 text: 'Junior Programmer', 
-                locations: [
-                    {name: 'Bandung', quota: 3}, 
-                    {name: 'Jakarta', quota: 2}, 
-                    {name: 'Surabaya', quota: 1}
+                positions: [
+                    {location: 'Bandung', quota: 3}, 
+                    {location: 'Jakarta', quota: 2}, 
+                    {location: 'Surabaya', quota: 1}
                 ]
             },
             {
                 value: 56, 
                 text: 'Technical Writer', 
-                locations: [
-                    {name: 'Bandung', quota: 4}, 
-                    {name: 'Jakarta', quota: 3}
+                positions: [
+                    {location: 'Bandung', quota: 4}, 
+                    {location: 'Jakarta', quota: 3}
                 ]
             },
             {
                 value: 57, 
                 text: 'System Analyst', 
-                locations: [
-                    {name: 'Bandung', quota: 1}
+                positions: [
+                    {location: 'Bandung', quota: 1}
                 ]
             },
         ];
@@ -176,17 +177,44 @@
 
                 if(vacancy.value == selectedValue) {
 
-                    vacancy.locations.forEach(location => {
+                    vacancy.positions.forEach(position => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = vacancy.value + '-' + location.name.toLowerCase();
-                        optionElement.text = vacancy.text + ' - ' + location.name;
+                        optionElement.value = vacancy.value + '-' + position.location.toLowerCase();
+                        optionElement.text = vacancy.text + ' - ' + position.location;
+                        optionElement.setAttribute("data-value", position.quota);
                         selectPosition.add(optionElement);
                     });
 
                 }
 
             });
+
+            selectPosition.dispatchEvent(new Event('change'));
             
+        }
+
+        function checkQuota() {
+
+            const selectElement = document.getElementById('position');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const vacancyName = '<strong>' + selectedOption.text + '</strong>';
+            const vacancyQuota = selectedOption.getAttribute("data-value");
+            const errorTextElement = document.getElementById('positionErrorText');
+
+            if(vacancyQuota == 0) {
+                errorTextElement.innerHTML = 'Mohon maaf, rekrutasi untuk '+ vacancyName + ' sudah penuh. dan tidak dapat dipilih.';
+                errorTextElement.classList.add("danger");
+                errorTextElement.classList.remove("success");
+            } else if (vacancyQuota > 0 && vacancyQuota <= 2) {
+                errorTextElement.innerHTML = 'Kuota tersisa untuk '+ vacancyName + ' hanya ' + vacancyQuota + ' pendaftar.';
+                errorTextElement.classList.add("danger");
+                errorTextElement.classList.remove("success");
+            } else {
+                errorTextElement.innerHTML = 'Anda dapat memilih lowongan '+ vacancyName + '.';
+                errorTextElement.classList.add("success");
+                errorTextElement.classList.remove("danger");
+            }
+
         }
 
         function submitForm(event) {
