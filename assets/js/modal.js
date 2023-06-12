@@ -5,8 +5,11 @@ function openModal() {
 
 function closeModal() {
     const modal = document.getElementById('successModal');
+    let vacancyForm = document.getElementById("vacancy");
     modal.style.display = 'none';
-    location.reload();
+    document.getElementById('formRecruitment').reset();
+    vacancyForm.value = "";
+    vacancyForm.dispatchEvent(new Event('change'));
 }
 
 window.onclick = function(event) {

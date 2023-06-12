@@ -26,7 +26,7 @@
                     <h3 class="title">Form Rekruitasi</h3>
                     <p class="caption">Isi data di bawah sesuai dengan identitas diri anda dan lowongan yang akan anda pilih</p>
                 </div>
-                <form action="" onsubmit="submitForm(event)">
+                <form action="" onsubmit="submitForm(event)" id="formRecruitment">
                     <div class="form-group">
                         <label for="fullname">Fullname<span class="required-marker">*</span></label>
                         <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" placeholder="Masukkan nama" required>
@@ -89,7 +89,7 @@
 
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal('formRecruitment')">&times;</span>
             <h2 class="modal-title success-text">SUKSES!</h2>
             <p class="modal-subtitle success-text">Terima kasih telah melakukan pengisian<br>
                 Permintaan anda akan segera kami proses</p>
