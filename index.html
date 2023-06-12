@@ -34,6 +34,7 @@
                     <div class="form-group">
                         <label for="email">Email<span class="required-marker">*</span></label>
                         <input class="form-control" type="email" name="email" id="email" placeholder="Masukkan email" required>
+                        <p class="form-text" id="emailErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="phonenumber">Phone Number<span class="required-marker">*</span></label>
@@ -121,6 +122,7 @@
 
     <script src="https://kit.fontawesome.com/4670674644.js" crossorigin="anonymous"></script>
     <script src="assets/js/modal.js"></script>
+    <script src="assets/js/validate.js"></script>
     <script>
 
         const vacancies = [
@@ -191,30 +193,6 @@
 
             selectPosition.dispatchEvent(new Event('change'));
             
-        }
-
-        function checkQuota() {
-
-            const selectElement = document.getElementById('position');
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            const vacancyName = '<strong>' + selectedOption.text + '</strong>';
-            const vacancyQuota = selectedOption.getAttribute("data-value");
-            const errorTextElement = document.getElementById('positionErrorText');
-
-            if(vacancyQuota == 0) {
-                errorTextElement.innerHTML = 'Mohon maaf, rekrutasi untuk '+ vacancyName + ' sudah penuh. dan tidak dapat dipilih.';
-                errorTextElement.classList.add("danger");
-                errorTextElement.classList.remove("success");
-            } else if (vacancyQuota > 0 && vacancyQuota <= 2) {
-                errorTextElement.innerHTML = 'Kuota tersisa untuk '+ vacancyName + ' hanya ' + vacancyQuota + ' pendaftar.';
-                errorTextElement.classList.add("danger");
-                errorTextElement.classList.remove("success");
-            } else {
-                errorTextElement.innerHTML = 'Anda dapat memilih lowongan '+ vacancyName + '.';
-                errorTextElement.classList.add("success");
-                errorTextElement.classList.remove("danger");
-            }
-
         }
 
         function submitForm(event) {
