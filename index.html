@@ -97,7 +97,7 @@
             <span class="close" onclick="closeModal('formRecruitment')">&times;</span>
             <h2 class="modal-title success-text">SUKSES!</h2>
             <p class="modal-subtitle success-text">Terima kasih telah melakukan pengisian<br>
-                Permintaan anda akan segera kami proses</p>
+                Anda adalah pendaftar ke-<span id="rankRegistered"></span>, permintaan anda akan segera kami proses</p>
             <table class="modal-table">
                 <tr>
                     <td class="title">Fullname</td>
@@ -230,6 +230,7 @@
                 document.getElementById('phonenumberText').innerHTML = phonenumber;
                 document.getElementById('vacancyText').innerHTML = selectedVacancy;
                 document.getElementById('positionText').innerHTML = selectedPosition;
+                document.getElementById('rankRegistered').innerHTML = dataVacancies.length;
 
                 openModal();
 

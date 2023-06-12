@@ -8,7 +8,7 @@ function closeModal() {
     const selectPosition = document.getElementById('position');
     const vacancyForm = document.getElementById("vacancy");
     modal.style.display = 'none';
-    
+
     document.getElementById('formRecruitment').reset();
     vacancyForm.value = "";
     removeSelectOptions(selectPosition);
