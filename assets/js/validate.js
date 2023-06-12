@@ -14,7 +14,6 @@ function validate(input, type = 'input') {
         if (selectedValue === '') {
             let text = input + ' wajib dipilih!';
             showErrorText(input + 'ErrorText', text, 'danger', 'success');
-            isValid = false;
         } else {
             showErrorText(input + 'ErrorText', '', 'success', 'danger');
         }
@@ -22,11 +21,17 @@ function validate(input, type = 'input') {
         let nameValue = nameInput.value.trim();
     
         if (nameValue === '') {
-            let text = input + ' wajib diisi!';
+            let text = input + ' tidak boleh kosong!';
             showErrorText(input + 'ErrorText', text, 'danger', 'success');
-            isValid = false;
         } else {
             showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+
+        if(input == 'email') {
+            if(!checkEmail(nameValue)) {
+                let text = 'Email sudah terdaftar!';
+                showErrorText('emailErrorText', text, 'danger', 'success');
+            }
         }
     }
 }
@@ -41,11 +46,19 @@ function validateInput() {
         let nameValue = nameInput.value.trim();
       
         if (nameValue === '') {
-            let text = input + ' wajib diisi!';
+            let text = input + ' tidak boleh kosong!';
             showErrorText(input + 'ErrorText', text, 'danger', 'success');
             isValid = false;
         } else {
             showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+
+        if(input == 'email') {
+            if(!checkEmail(nameValue)) {
+                let text = 'Email sudah terdaftar!';
+                showErrorText('emailErrorText', text, 'danger', 'success');
+                isValid = false;
+            }
         }
 
     });
@@ -85,4 +98,16 @@ function checkQuota() {
         showErrorText('positionErrorText', text, 'success', 'danger');
     }
 
+}
+
+function checkEmail(email) {
+    let isAvailable = true;
+
+    dataVacancies.forEach(vacancy => {
+        if(vacancy.email == email) {
+            isAvailable = false;
+        }
+    });
+
+    return isAvailable;
 }

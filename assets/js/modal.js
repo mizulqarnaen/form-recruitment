@@ -5,11 +5,13 @@ function openModal() {
 
 function closeModal() {
     const modal = document.getElementById('successModal');
-    let vacancyForm = document.getElementById("vacancy");
+    const selectPosition = document.getElementById('position');
+    const vacancyForm = document.getElementById("vacancy");
     modal.style.display = 'none';
+    
     document.getElementById('formRecruitment').reset();
     vacancyForm.value = "";
-    vacancyForm.dispatchEvent(new Event('change'));
+    removeSelectOptions(selectPosition);
 }
 
 window.onclick = function(event) {
