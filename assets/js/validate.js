@@ -7,6 +7,7 @@ function showErrorText(idElem, text, add, remove) {
 
 function validateInput() {
     const arrayInput = ['fullname', 'email', 'phonenumber'];
+    const arraySelect = ['vacancy', 'position'];
     let isValid = true;
 
     arrayInput.forEach(input => {
@@ -15,6 +16,20 @@ function validateInput() {
       
         if (nameValue === '') {
             let text = input + ' wajib diisi!';
+            showErrorText(input + 'ErrorText', text, 'danger', 'success');
+            isValid = false;
+        } else {
+            showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+
+    });
+
+    arraySelect.forEach(input => {
+        let selectElement = document.getElementById(input);
+        let selectedValue = selectElement.value;
+      
+        if (selectedValue === '') {
+            let text = input + ' wajib dipilih!';
             showErrorText(input + 'ErrorText', text, 'danger', 'success');
             isValid = false;
         } else {
