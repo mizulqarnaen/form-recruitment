@@ -5,14 +5,40 @@ function showErrorText(idElem, text, add, remove) {
     errorTextElement.classList.remove(remove);
 }
 
+function validate(input, type = 'input') {
+    let nameInput = document.getElementById(input);
+
+    if(type == 'select') {
+        let selectedValue = nameInput.value;
+      
+        if (selectedValue === '') {
+            let text = input + ' wajib dipilih!';
+            showErrorText(input + 'ErrorText', text, 'danger', 'success');
+            isValid = false;
+        } else {
+            showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+    } else {
+        let nameValue = nameInput.value.trim();
+    
+        if (nameValue === '') {
+            let text = input + ' wajib diisi!';
+            showErrorText(input + 'ErrorText', text, 'danger', 'success');
+            isValid = false;
+        } else {
+            showErrorText(input + 'ErrorText', '', 'success', 'danger');
+        }
+    }
+}
+
 function validateInput() {
     const arrayInput = ['fullname', 'email', 'phonenumber'];
     const arraySelect = ['vacancy', 'position'];
     let isValid = true;
 
     arrayInput.forEach(input => {
-        var nameInput = document.getElementById(input);
-        var nameValue = nameInput.value.trim();
+        let nameInput = document.getElementById(input);
+        let nameValue = nameInput.value.trim();
       
         if (nameValue === '') {
             let text = input + ' wajib diisi!';

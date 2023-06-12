@@ -29,17 +29,17 @@
                 <form action="" onsubmit="submitForm(event)" id="formRecruitment">
                     <div class="form-group">
                         <label for="fullname">Fullname<span class="required-marker">*</span></label>
-                        <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" onchange="validateInput()" placeholder="Masukkan nama">
+                        <input class="form-control" style="border-color: #cfd8dc;" type="text" name="fullname" id="fullname" onchange="validate(this.id)" placeholder="Masukkan nama">
                         <p class="form-text" id="fullnameErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="email">Email<span class="required-marker">*</span></label>
-                        <input class="form-control" type="email" name="email" id="email" onchange="validateInput()" placeholder="Masukkan email">
+                        <input class="form-control" type="email" name="email" id="email" onchange="validate(this.id)" placeholder="Masukkan email">
                         <p class="form-text" id="emailErrorText"></p>
                     </div>
                     <div class="form-group">
                         <label for="phonenumber">Phone Number<span class="required-marker">*</span></label>
-                        <input class="form-control" type="text" name="phonenumber" id="phonenumber" onchange="validateInput()" placeholder="Masukkan nomor telepon">
+                        <input class="form-control" type="text" name="phonenumber" id="phonenumber" onchange="validate(this.id)" placeholder="Masukkan nomor telepon">
                         <p class="form-text" id="phonenumberErrorText"></p>
                     </div>
                     <div class="form-group">
@@ -128,6 +128,8 @@
     <script src="assets/js/validate.js"></script>
     <script>
 
+        let dataVacancies = [];
+
         const vacancies = [
             {
                 value: 55, 
@@ -172,7 +174,7 @@
 
         function showPositions() {
 
-            validateInput();
+            validate('vacancy', 'select');
 
             const selectElement = document.getElementById('vacancy');
             const selectedValue = selectElement.value;
@@ -212,6 +214,16 @@
                 let position = document.getElementById('position');
                 let selectedVacancy = vacancy.options[vacancy.selectedIndex].text;
                 let selectedPosition = position.options[position.selectedIndex].text;
+
+                let dataArray = {
+                    fullname: fullname,
+                    email: email,
+                    phonenumber: phonenumber,
+                    vacancy: selectedVacancy,
+                    position: selectedPosition,
+                }
+
+                dataVacancies.push(dataArray);
 
                 document.getElementById('fullnameText').innerHTML = fullname;
                 document.getElementById('emailText').innerHTML = email;
