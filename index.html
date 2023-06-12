@@ -123,9 +123,30 @@
     <script>
 
         const vacancies = [
-            {value: 55, text: 'Junior Programmer', locations: ['Bandung', 'Jakarta', 'Surabaya']},
-            {value: 56, text: 'Technical Writer', locations: ['Bandung', 'Jakarta']},
-            {value: 57, text: 'System Analyst', locations: ['Bandung']},
+            {
+                value: 55, 
+                text: 'Junior Programmer', 
+                locations: [
+                    {name: 'Bandung', quota: 3}, 
+                    {name: 'Jakarta', quota: 2}, 
+                    {name: 'Surabaya', quota: 1}
+                ]
+            },
+            {
+                value: 56, 
+                text: 'Technical Writer', 
+                locations: [
+                    {name: 'Bandung', quota: 4}, 
+                    {name: 'Jakarta', quota: 3}
+                ]
+            },
+            {
+                value: 57, 
+                text: 'System Analyst', 
+                locations: [
+                    {name: 'Bandung', quota: 1}
+                ]
+            },
         ];
 
         const selectVacancy = document.getElementById('vacancy');
@@ -157,8 +178,8 @@
 
                     vacancy.locations.forEach(location => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = vacancy.value + '-' + location.toLowerCase();
-                        optionElement.text = vacancy.text + ' - ' + location;
+                        optionElement.value = vacancy.value + '-' + location.name.toLowerCase();
+                        optionElement.text = vacancy.text + ' - ' + location.name;
                         selectPosition.add(optionElement);
                     });
 
